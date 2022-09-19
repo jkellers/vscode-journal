@@ -89,7 +89,10 @@ The default is configured like this:
             "name": "files",
             "template": "- NOTE: [${title}](${link})", 
             "after": "## Notes"
-
+        },
+        {
+            "name" : "week",
+            "template" : "# week ${week}"
         }
     ],
 ````
@@ -164,6 +167,13 @@ The `after`-flag instructs the extensions, where to place the string in an exist
 * Key: `journal.templates["files"].after`
 * Default value:  `## Notes` 
 * Supported variables:  none
+
+### Week
+* Key: `journal.templates["week"].template`
+* Default value:  `# week ${week}`
+* Supported variables:  
+   * `${input}, ${year}`, `${month}`, `${day}`, `${weekday}`, `${localDate}`, `${localTime}`, `${d:}` (custom)
+   * `${d:+nn}` (Add nn days to the current day of the month)
 
 ## Syntax highlighting
 On the first start with the extension, defaults will be written into your user settings. You can adapt the colors if you want. 

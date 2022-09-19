@@ -310,7 +310,7 @@
               "after": "## Notes"
             },
             {
-              "name": "weekly",
+              "name": "week",
               "template": "# Week ${week}\n\n"
             }
           ],

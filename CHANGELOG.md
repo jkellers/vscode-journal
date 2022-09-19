@@ -9,6 +9,10 @@
 * Rework the whole syntax highlighting (it's a mess)
 * More code actions and code lenses (e.g. to pull all open tasks to the current journal entry)
 
+## 1.0.?
+* Improved support for week templates
+* Fix week default settings
+
 ## 1.0.2
 * [Issue #136](https://github.com/pajoma/vscode-journal/issues/136) Added a configuration option to disable syntax highlighting (disabled by default)
 ## 1.0.1

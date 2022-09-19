@@ -622,6 +622,8 @@ export class Configuration {
 
                 sp.value = sp.template;
                 sp.value = this.replaceVariableValue("week", week + "", sp.value);
+                sp.value = this.replaceUpcomingDays(sp.value);
+                sp.value = this.replaceDateFormats(sp.value, new Date());
 
                 return sp;
             });
@@ -785,6 +787,27 @@ export class Configuration {
         }
     }
 
+
+    /**
+     * Replaces and calculates the upcoming day of the month outgoing from today
+     * Search pattern: {:d+nn}, where nn can be a single or double-digit number
+     * 
+     * @param inputText: string
+     * @returns modified string if at least one match is found, otherwise return
+     * the inputText
+     */
+    private replaceUpcomingDays(inputText: string) : string {
+        const pattern = /\{\:d\+(\d{1,2})\}/mg;
+        const matches = [...inputText.matchAll(pattern)];
+        let output = inputText;
+
+        for (let match of matches){
+            const date = moment().add(parseInt(match[1]), "days");
+            output = output.replace(match[0], date.date().toString());
+        }
+
+        return output;
+    }
 
 
 
