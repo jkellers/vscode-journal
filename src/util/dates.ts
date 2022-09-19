@@ -202,3 +202,24 @@ export function normalizeDayAsString(input: string, locale?: string): moment.Mom
         return template;
 
     }
+
+/**
+     * Replaces and calculates the upcoming day of the month outgoing from today
+     * Search pattern: {:d+nn}, where nn can be a single or double-digit number
+     * 
+     * @param inputText: string
+     * @returns modified string if at least one match is found, otherwise return
+     * the inputText
+     */
+export function replaceUpcomingDays(inputText: string): string {
+    const pattern = /\{\:d\+(\d{1,2})\}/mg;
+    const matches = [...inputText.matchAll(pattern)];
+    let output = inputText;
+
+    for (let match of matches) {
+        const date = moment().add(parseInt(match[1]), "days");
+        output = output.replace(match[0], date.date().toString());
+    }
+
+    return output;
+}

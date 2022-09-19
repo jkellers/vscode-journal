@@ -796,12 +796,12 @@ export class Configuration {
      * @returns modified string if at least one match is found, otherwise return
      * the inputText
      */
-    private replaceUpcomingDays(inputText: string) : string {
+    private replaceUpcomingDays(inputText: string): string {
         const pattern = /\{\:d\+(\d{1,2})\}/mg;
         const matches = [...inputText.matchAll(pattern)];
         let output = inputText;
 
-        for (let match of matches){
+        for (let match of matches) {
             const date = moment().add(parseInt(match[1]), "days");
             output = output.replace(match[0], date.date().toString());
         }
